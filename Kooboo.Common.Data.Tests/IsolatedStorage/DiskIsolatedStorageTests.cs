@@ -134,7 +134,10 @@ namespace Kooboo.Common.Data.Tests.IsolatedStorage
             var storage = new DiskIsolateStorage("Test", baseDirectory);
             storage.InitStore();
             string storePath = Path.Combine(baseDirectory, "Test");
-
+            if (!Directory.Exists(storePath))
+            {
+                Directory.CreateDirectory(storePath);
+            }
             string sourceFileName = "a.txt";
             string destinationFileName = "b.txt";
 
